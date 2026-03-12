@@ -1,10 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
+const qs = require('qs');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+
+app.set('query parser', (str) => qs.parse(str));
 
 // MIDDLEWARE
 app.use(express.json());
